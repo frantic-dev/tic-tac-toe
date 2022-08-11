@@ -1,0 +1,29 @@
+:root{
+    --border: 1px solid red;
+}
+#board-container {
+    margin: auto;
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 10em);
+    gap: 0.6em;
+    background-color: black;
+    
+}
+.spot {
+    /* border: var(--border); */
+    background-color: white;
+}
+.spot-btn {
+    height: 156px;
+    width: 144px;
+    margin: 2px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(192, 192, 192);
+    font-size: 8em;
+}
+.spot-btn:hover {
+    opacity: 0.5;
+}
