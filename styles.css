@@ -3,16 +3,16 @@
 }
 #board-container {
     margin: auto;
-    width: 70%;
+    width: 460px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 10em);
     gap: 0.6em;
     background-color: black;
     
+    /* border: var(--border); */
 }
 .spot {
-    /* border: var(--border); */
     background-color: white;
 }
 .spot-btn {

@@ -27,13 +27,17 @@ const ticTacToe = (() => {
     function syncSpots() {
         for (let i = 0; i < spots.length ; i++) {
             spots[i].addEventListener('click', () => {
-                spots[i].value = playerMoves();
-                gameBoard[i] = spots[i].value;
-                console.log(gameBoard)
+                if(spots[i].value == "") {
+                    spots[i].value = playerMoves();
+                    gameBoard[i] = spots[i].value;
+                    console.log(gameBoard)
+                }
             }
             )}
         }
         
+    
+
         
     function Players (player, moves) {
         return {player};
