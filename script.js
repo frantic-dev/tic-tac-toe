@@ -10,6 +10,13 @@ const ticTacToe = (() => {
     let spots = document.querySelectorAll('.spot-btn');
     spots = [...spots];
 
+    const resetBtn = document.querySelector('#reset-btn');
+
+    resetBtn.addEventListener('click', () => spots.forEach((spot)=> {
+        spot.value = "";
+        return gameBoard = ['','','','','','','','',''];
+    } ))
+
     function playerMoves() {
         let movesX = gameBoard.filter((move) => move == "X").length;
         let movesO = gameBoard.filter((move) => move == "O").length
@@ -36,12 +43,7 @@ const ticTacToe = (() => {
     return {Players, syncSpots, spots, gameBoard}
 })();
 
-const resetBtn = document.querySelector('#reset-btn');
 
-resetBtn.addEventListener('click', () => ticTacToe.spots.forEach((spot)=> {
-    spot.value = "";
-    ticTacToe.gameBoard = ['','','','','','','','',''];
-} ))
 ticTacToe.syncSpots()
 
 
