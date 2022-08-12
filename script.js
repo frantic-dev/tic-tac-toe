@@ -31,6 +31,7 @@ const ticTacToe = (() => {
                     spots[i].value = alternateMoves();
                     gameBoard[i] = spots[i].value;
                     console.log(gameBoard)
+                    gameWon()
                 }
             }
             )}
@@ -45,6 +46,24 @@ const ticTacToe = (() => {
             return multiDBoard;
         }
 
+        function gameWon() {
+            
+            convertToMultiD().rows.forEach((row) => {
+                if (row[0] == row[1] && row[0] == row[2] && row[0] != "") {
+                    console.log(row[0] + " won!!!");
+                }
+            })
+            convertToMultiD().cols.forEach((col) => {
+                if (col[0] == col[1] && col[0] == col[2] && col[0] != "") {
+                    console.log(col[0] + " has won biiii-")
+                }
+            })
+            convertToMultiD().across.forEach((diagonal) => {
+                if(diagonal[0] == diagonal[1] && diagonal[0] == diagonal[2] && diagonal[0] != "") {
+                    console.log("oof you won " + diagonal[0])
+                }
+            })
+        }
         
     function Players (player, moves) {
         return {player};
