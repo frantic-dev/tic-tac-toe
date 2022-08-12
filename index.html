@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <div id="board-container">
+    <h1>Tic-Tac-Toe</h1>
+    <div id="board">
         <div class="spot">
             <input type="button" class="spot-btn">
            </div>
@@ -38,7 +40,9 @@
             <input type="button" class="spot-btn">
            </div>
     </div>
-    <input type="reset" value="Reset" id="reset-btn">
+    <div id="reset-container">
+        <input type="reset" value="Reset" id="reset-btn">
+    </div>    
     <div id="result"></div>
 </body>
 </html>
