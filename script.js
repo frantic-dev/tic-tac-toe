@@ -14,7 +14,7 @@ const ticTacToe = (() => {
 
     resetBtn.addEventListener('click', () => spots.forEach((spot)=> {
         spot.value = "";
-        result.textContent = "";
+        resultDiv.textContent = "";
         gameBoard = ['','','','','','','','',''];
     } ))
 
@@ -25,19 +25,21 @@ const ticTacToe = (() => {
         else if (movesX > movesO) return "O"
     }
     
-    const result = document.querySelector('#result');
+    const resultDiv = document.querySelector('#result');
     
     function syncSpots() {
         for (let i = 0; i < spots.length ; i++) {
             spots[i].addEventListener('click', () => {
-                if(spots[i].value == "") {
+                if(spots[i].value == "" && resultDiv.textContent == "") {
                     spots[i].value = alternateMoves();
                     gameBoard[i] = spots[i].value;
                     console.log(gameBoard)
-                    result.textContent = gameWon()
+                    resultDiv.textContent = gameWon();
+                    gameTie()
+
                 }
             }
-        )}
+            )}
     }
         
     function convertToMultiD() {
@@ -51,6 +53,7 @@ const ticTacToe = (() => {
 
     function gameWon() {
         let result = "";
+
         convertToMultiD().rows.forEach((row) => {
             if (row[0] == row[1] && row[0] == row[2] && row[0] != "") {
                 return result = row[0] + " won!!!";
@@ -69,11 +72,13 @@ const ticTacToe = (() => {
         return result;
     }
 
-    // function stopWonGame () {
-
-
-    // }
-
+    function gameTie() {
+        let emptySpots = 9;
+        for (let spot of gameBoard) {
+            if(spot != "") emptySpots--;
+            if(emptySpots == 0 && resultDiv.textContent == "") return resultDiv.textContent = "it's a tie."
+        }
+    }
         
     function Players (player, moves) {
         return {player};
