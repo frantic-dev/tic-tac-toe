@@ -14,7 +14,8 @@ const ticTacToe = (() => {
 
     resetBtn.addEventListener('click', () => spots.forEach((spot)=> {
         spot.value = "";
-        return gameBoard = ['','','','','','','','',''];
+        result.textContent = "";
+        gameBoard = ['','','','','','','','',''];
     } ))
 
     function alternateMoves() {
@@ -22,7 +23,9 @@ const ticTacToe = (() => {
         let movesO = gameBoard.filter((move) => move == "O").length
         if (movesX == movesO) return 'X';
         else if (movesX > movesO) return "O"
-        }
+    }
+    
+    const result = document.querySelector('#result');
     
     function syncSpots() {
         for (let i = 0; i < spots.length ; i++) {
@@ -31,39 +34,46 @@ const ticTacToe = (() => {
                     spots[i].value = alternateMoves();
                     gameBoard[i] = spots[i].value;
                     console.log(gameBoard)
-                    gameWon()
+                    result.textContent = gameWon()
                 }
             }
-            )}
-        }
+        )}
+    }
         
-        function convertToMultiD() {
-            let multiDBoard = {
-                rows : [[gameBoard[0] , gameBoard[1] , gameBoard[2]],[ gameBoard[3] , gameBoard[4] , gameBoard[5]],[gameBoard[6] , gameBoard[7] , gameBoard[8]]],
-                cols:[[gameBoard[0] ,  gameBoard[3] , gameBoard[6]],[gameBoard[1], gameBoard[4] , gameBoard[7]],[gameBoard[2] , gameBoard[5] , gameBoard[8]]],
-                across:[[gameBoard[0] , gameBoard[4] , gameBoard[8]],[gameBoard[2] , gameBoard[4] , gameBoard[6]]]
-            };
-            return multiDBoard;
-        }
+    function convertToMultiD() {
+        let multiDBoard = {
+            rows : [[gameBoard[0] , gameBoard[1] , gameBoard[2]],[ gameBoard[3] , gameBoard[4] , gameBoard[5]],[gameBoard[6] , gameBoard[7] , gameBoard[8]]],
+            cols:[[gameBoard[0] ,  gameBoard[3] , gameBoard[6]],[gameBoard[1], gameBoard[4] , gameBoard[7]],[gameBoard[2] , gameBoard[5] , gameBoard[8]]],
+            across:[[gameBoard[0] , gameBoard[4] , gameBoard[8]],[gameBoard[2] , gameBoard[4] , gameBoard[6]]]
+        };
+        return multiDBoard;
+    }
 
-        function gameWon() {
-            
-            convertToMultiD().rows.forEach((row) => {
-                if (row[0] == row[1] && row[0] == row[2] && row[0] != "") {
-                    console.log(row[0] + " won!!!");
-                }
-            })
-            convertToMultiD().cols.forEach((col) => {
-                if (col[0] == col[1] && col[0] == col[2] && col[0] != "") {
-                    console.log(col[0] + " has won biiii-")
-                }
-            })
-            convertToMultiD().across.forEach((diagonal) => {
-                if(diagonal[0] == diagonal[1] && diagonal[0] == diagonal[2] && diagonal[0] != "") {
-                    console.log("oof you won " + diagonal[0])
-                }
-            })
-        }
+    function gameWon() {
+        let result = "";
+        convertToMultiD().rows.forEach((row) => {
+            if (row[0] == row[1] && row[0] == row[2] && row[0] != "") {
+                return result = row[0] + " won!!!";
+            }
+        })
+        convertToMultiD().cols.forEach((col) => {
+            if (col[0] == col[1] && col[0] == col[2] && col[0] != "") {
+                return result = col[0] + " has won biiii-";
+            }
+        })
+        convertToMultiD().across.forEach((diagonal) => {
+            if(diagonal[0] == diagonal[1] && diagonal[0] == diagonal[2] && diagonal[0] != "") {
+                return result = "oof you won " + diagonal[0];
+            }
+        })
+        return result;
+    }
+
+    // function stopWonGame () {
+
+
+    // }
+
         
     function Players (player, moves) {
         return {player};
