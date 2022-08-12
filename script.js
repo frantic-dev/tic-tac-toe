@@ -27,7 +27,7 @@ const ticTacToe = (() => {
     
     const resultDiv = document.querySelector('#result');
     
-    function syncSpots() {
+    function playRound() {
         for (let i = 0; i < spots.length ; i++) {
             spots[i].addEventListener('click', () => {
                 if(spots[i].value == "" && resultDiv.textContent == "") {
@@ -85,11 +85,11 @@ const ticTacToe = (() => {
     }
 
 
-    return {Players, syncSpots, spots, gameBoard, convertToMultiD}
+    return {playRound}
 })();
 
 
-ticTacToe.syncSpots()
+ticTacToe.playRound()
 
 
 
