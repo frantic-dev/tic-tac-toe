@@ -1,12 +1,17 @@
 :root{
     --border: 1px solid red;
-    --body: rgb(30, 11, 80);
+    --body: rgb(35, 36, 109);
     --board-bg: rgb(77, 30, 87);
     --board-spot: rgba(221, 218, 218, 0.726);
     --hover-spot: rgb(241, 239, 239);
     --result-font: white;
     --header: rgb(255, 255, 2);
     --reset-btn: white;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 body{
     background-color: var(--body);
@@ -20,7 +25,6 @@ h1 {
 }
 #board {
     margin: auto;
-    margin-top: 2em;
     width: 450px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -30,9 +34,9 @@ h1 {
     border-radius: 20px;
     box-shadow: 0 0 10px black;
     background-color: var(--board-bg);
-    /* display: none; */
+    display: none;
 }
-#board:hover {
+#board:hover, .players-window:hover {
     box-shadow: 0 0 10px rgba(226, 59, 226, 0.781);
 }
 .spot-btn {
@@ -50,13 +54,12 @@ h1 {
 #result {
     color: var(--result-font);
 }
-#reset-container{
+#reset-container, #start-container{
     margin-top: 1.5em;
-    /* border: var(--border); */
     display: flex;
     justify-content: center;
 }
-#reset-btn {
+#reset-btn, #start-btn {
     background-color: var(--reset-btn);
     color: #000;
     border: 1px solid #000;
@@ -68,10 +71,58 @@ h1 {
     padding: 7px 30px;
     transition: all .14s ease-out;
 }
-#reset-btn:hover {
+#reset-btn {
+    display: none;
+}
+#reset-btn:hover, #start-btn:hover {
     box-shadow: 0 5px pink;
     transform: translate(0,-5px);
 }
-#reset-btn:focus-visible{
+#reset-btn:focus-visible, #start-btn:focus-visible {
     outline-offset: 1px;
+}
+#players-container {
+    width: 80%;
+    margin: auto;
+    margin-top: 8em;
+    display: flex;
+    justify-content: space-around;
+}
+.players-window {
+    width: 40%;
+    height: 10em;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(161, 129, 190);
+    /* display: none; */
+}
+
+h3 {
+    color: rgb(255, 136, 0);
+    display: block;
+    background-color: rgb(255, 252, 80);
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 1.4em;
+    font-family: 'silkscreen';
+}
+label {
+    color: rgb(231, 245, 245);
+    font-size: 1.22em;
+    margin-left: 15px; 
+    font-family: 'silkscreen';
+}
+.players-input {
+    width: 55%;
+    margin-left: 10px;
+    font-family: 'cairo';
+    font-size: 1em;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+#start-btn {
+    display: flex;
+    align-items: center;
+    /* display: none; */
 }
