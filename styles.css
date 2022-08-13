@@ -4,9 +4,9 @@
     --board-bg: rgb(77, 30, 87);
     --board-spot: rgba(221, 218, 218, 0.726);
     --hover-spot: rgb(241, 239, 239);
-    --result-font: white;
+    --result-font: rgb(0, 0, 0);
     --header: rgb(255, 255, 2);
-    --reset-btn: white;
+    --restart-btn: white;
 }
 *{
     margin: 0;
@@ -51,16 +51,13 @@ h1 {
 .spot-btn:hover {
     background-color: var(--hover-spot);
 }
-#result {
-    color: var(--result-font);
-}
-#reset-container, #start-container{
+#restart-container, #start-container{
     margin-top: 1.5em;
     display: flex;
     justify-content: center;
 }
-#reset-btn, #start-btn {
-    background-color: var(--reset-btn);
+#restart-btn, #start-btn {
+    background-color: var(--restart-btn);
     color: #000;
     border: 1px solid #000;
     border-radius: 4px;
@@ -71,14 +68,14 @@ h1 {
     padding: 7px 30px;
     transition: all .14s ease-out;
 }
-#reset-btn {
+#restart-btn {
     display: none;
 }
-#reset-btn:hover, #start-btn:hover {
+#restart-btn:hover, #start-btn:hover {
     box-shadow: 0 5px pink;
     transform: translate(0,-5px);
 }
-#reset-btn:focus-visible, #start-btn:focus-visible {
+#restart-btn:focus-visible, #start-btn:focus-visible {
     outline-offset: 1px;
 }
 #players-container {
@@ -125,4 +122,39 @@ label {
 #start-btn {
     display: flex;
     align-items: center;
+}
+#result-container {
+    color: var(--result-font);
+    background-color: rgb(201, 80, 151);
+    width: 25em;
+    height: 10em;
+    position: fixed;
+    top: 35%;
+    left: calc((100% - 25em) / 2);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#result-banner {
+    background-color: rgb(43, 43, 43);
+    width: 100%;
+    height: 2em;
+    position: absolute;
+    top: 0;
+}
+#exit-result-btn {
+    position: absolute;
+    right: 4px;
+    top: 2px;
+    font-size: 1.2em;
+    padding: 0 8px;
+    background-color: var(--header);
+}
+#exit-result-btn:hover {
+    background-color: rgb(255, 238, 0)
+}
+#result {
+    font-size: 1.7em;
+    font-family: 'silkscreen';
+    color: rgb(255, 253, 255);
 }

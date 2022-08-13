@@ -10,9 +10,9 @@ const ticTacToe = (() => {
     let spots = document.querySelectorAll('.spot-btn');
     spots = [...spots];
 
-    const resetBtn = document.querySelector('#reset-btn');
+    const restartBtn = document.querySelector('#restart-btn');
 
-    resetBtn.addEventListener('click', () => spots.forEach((spot)=> {
+    restartBtn.addEventListener('click', () => spots.forEach((spot)=> {
         spot.value = "";
         resultDiv.textContent = "";
         gameBoard = ['','','','','','','','',''];
@@ -36,7 +36,7 @@ const ticTacToe = (() => {
                     console.log(gameBoard)
                     resultDiv.textContent = gameWon();
                     gameTie()
-
+                    showResult()
                 }
             }
             )}
@@ -87,16 +87,27 @@ const ticTacToe = (() => {
     startBtn.addEventListener('click', () => {
         startBtn.setAttribute('style', 'display: none');
        playersContainer.setAttribute('style', 'display: none;');
-        resetBtn.setAttribute('style', 'display: block');
+        restartBtn.setAttribute('style', 'display: block');
         board.setAttribute('style', 'display: grid');
     })
-        
+
+    
+    const exitResultBtn = document.querySelector('#exit-result-btn');
+    const resultContainer = document.querySelector('#result-container')
+    
+    exitResultBtn.addEventListener('click', () => resultContainer.setAttribute('style', 'display: none;'))
+    
+    function showResult() {
+        if(resultDiv.textContent != "") {
+            resultContainer.style.display = "flex";
+        }
+    }
     function Players (player, moves) {
         return {player};
     }
 
 
-    return {playRound}
+    return {playRound, resultDiv}
 })();
 
 
