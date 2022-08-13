@@ -79,6 +79,17 @@ const ticTacToe = (() => {
             if(emptySpots == 0 && resultDiv.textContent == "") return resultDiv.textContent = "it's a tie."
         }
     }
+
+    const startBtn = document.querySelector('#start-btn');
+    const playersContainer = document.querySelector('#players-container');
+    const board = document.querySelector('#board');
+
+    startBtn.addEventListener('click', () => {
+        startBtn.setAttribute('style', 'display: none');
+       playersContainer.setAttribute('style', 'display: none;');
+        resetBtn.setAttribute('style', 'display: block');
+        board.setAttribute('style', 'display: grid');
+    })
         
     function Players (player, moves) {
         return {player};
