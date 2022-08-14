@@ -2,11 +2,6 @@ const ticTacToe = (() => {
     
     let gameBoard = ['','','','','','','','',''];
     
-    // function GameBoard (gameSpots) {
-    //     gameBoard.push(gameSpots);
-    //     return gameBoard;
-    // }
-
     let spots = document.querySelectorAll('.spot-btn');
     spots = [...spots];
 
@@ -108,6 +103,21 @@ const ticTacToe = (() => {
         player2 = Players(player2Name, "O")
     }
  
+    // const exitResultBtn = document.querySelector('#exit-result-btn');
+    // const resultContainer = document.querySelector('#result-container')
+    
+    exitResultBtn.addEventListener('click', () => resultContainer.setAttribute('style', 'display: none;'))
+    
+    function showResult() {
+        if(resultDiv.textContent != "") {
+            resultContainer.style.display = "flex";
+        }
+    }
+
+    function Players (name, moves) {
+        return {name, moves};
+    }
+
     const exitResultBtn = document.querySelector('#exit-result-btn');
     const resultContainer = document.querySelector('#result-container')
     
@@ -125,15 +135,8 @@ const ticTacToe = (() => {
 
 
     return {playRound, getPlayers}
-})();
-
+})()
 
 ticTacToe.playRound()
-
-
-
-
-
-
 
 
