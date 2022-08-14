@@ -23,6 +23,13 @@ h1 {
     text-align: center;
     font-size: 30px;
 }
+#board-players-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+
+}
 #board {
     margin: auto;
     width: 460px;
@@ -157,4 +164,20 @@ label {
     font-size: 1.7em;
     font-family: 'silkscreen';
     color: rgb(255, 253, 255);
+}
+#player1-info, #player2-info {
+    text-align: center;
+    width: 9em;
+    padding: 10px 40px;
+    margin: auto;
+    background-color: rgb(39, 99, 114);
+    color: white;
+    display: none;
+    align-self: center;
+    border-radius: 10px;
+    font-size: 1.4em;
+    font-family: 'cairo';
+}
+#player1-info {
+    box-shadow: 0 0 10px rgba(226, 59, 226, 0.781)
 }

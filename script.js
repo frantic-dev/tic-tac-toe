@@ -7,17 +7,35 @@ const ticTacToe = (() => {
 
     const restartBtn = document.querySelector('#restart-btn');
 
-    restartBtn.addEventListener('click', () => spots.forEach((spot)=> {
+    restartBtn.addEventListener('click', () => {
+        spots.forEach((spot)=> {
         spot.value = "";
         resultDiv.textContent = "";
         gameBoard = ['','','','','','','','',''];
-    } ))
+    })
+    player1Info.style.boxShadow = "0 0 10px rgba(226, 59, 226, 0.781)";
+    player2Info.style.boxShadow = "0 0 0 rgba(226, 59, 226, 0.781)";
+    player2Info.textContent = player2.name;
+    player1Info.textContent = `${player1.name}'s turn`;
+})
+
 
     function alternateMoves () {
         let movesX = gameBoard.filter((move) => move == player1.moves).length;
         let movesO = gameBoard.filter((move) => move == player2.moves).length
-        if (movesX == movesO) return player1.moves;
-        else if (movesX > movesO) return player2.moves
+        if (movesX == movesO) {
+            player1Info.style.boxShadow = "0 0 0 rgba(226, 59, 226, 0.781)";
+            player2Info.style.boxShadow = "0 0 10px rgba(226, 59, 226, 0.781)";
+            player1Info.textContent = player1.name;
+            player2Info.textContent = `${player2.name}'s turn`;
+            return player1.moves
+        } else if (movesX > movesO) {
+            player1Info.style.boxShadow = "0 0 10px rgba(226, 59, 226, 0.781)";
+            player2Info.style.boxShadow = "0 0 0 rgba(226, 59, 226, 0.781)";
+            player1Info.textContent = `${player1.name}'s turn`;
+            player2Info.textContent = player2.name;
+            return player2.moves
+        }
     }
     
     const resultDiv = document.querySelector('#result');
@@ -28,13 +46,18 @@ const ticTacToe = (() => {
                 if(spots[i].value == "" && resultDiv.textContent == "") {
                     spots[i].value = alternateMoves();
                     gameBoard[i] = spots[i].value;
-                    console.log(gameBoard)
+                    changeMoveColor(spots[i])
                     resultDiv.textContent = gameWon();
                     gameTie()
                     showResult()
                 }
             }
             )}
+    }
+
+    function changeMoveColor(spot) {
+        if(spot.value == player1.moves) spot.style.color = "rgb(255, 153, 36)";
+        else spot.style.color = "rgb(35, 149, 153)"
     }
         
     function convertToMultiD() {
@@ -82,6 +105,8 @@ const ticTacToe = (() => {
     const startBtn = document.querySelector('#start-btn');
     const playersContainer = document.querySelector('#players-container');
     const board = document.querySelector('#board');
+    const player1Info = document.querySelector('#player1-info');
+    const player2Info = document.querySelector('#player2-info')
     let player1Name = document.querySelector('#player1-input');
     let player2Name = document.querySelector('#player2-input');
 
@@ -90,7 +115,11 @@ const ticTacToe = (() => {
        playersContainer.setAttribute('style', 'display: none;');
         restartBtn.setAttribute('style', 'display: block');
         board.setAttribute('style', 'display: grid');
-        getPlayers()
+        player1Info.style.display = "flex";
+        player2Info.style.display = "flex";
+        getPlayers();
+        player1Info.textContent = `${player1.name}'s turn`;
+        player2Info.textContent = player2.name;
     })
 
     let player1;
@@ -103,21 +132,6 @@ const ticTacToe = (() => {
         player2 = Players(player2Name, "O")
     }
  
-    // const exitResultBtn = document.querySelector('#exit-result-btn');
-    // const resultContainer = document.querySelector('#result-container')
-    
-    exitResultBtn.addEventListener('click', () => resultContainer.setAttribute('style', 'display: none;'))
-    
-    function showResult() {
-        if(resultDiv.textContent != "") {
-            resultContainer.style.display = "flex";
-        }
-    }
-
-    function Players (name, moves) {
-        return {name, moves};
-    }
-
     const exitResultBtn = document.querySelector('#exit-result-btn');
     const resultContainer = document.querySelector('#result-container')
     
