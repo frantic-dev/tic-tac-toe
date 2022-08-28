@@ -26,7 +26,7 @@ h1 {
 #board-players-container {
     width: 90%;
     margin: auto;
-    display: flex;
+    display: none;
     justify-content: space-around;
 
 }
@@ -41,7 +41,6 @@ h1 {
     border-radius: 20px;
     box-shadow: 0 0 10px black;
     background-color: var(--board-bg);
-    display: none;
 }
 #board:hover, .players-window:hover {
     box-shadow: 0 0 10px rgba(226, 59, 226, 0.781);
@@ -172,7 +171,7 @@ label {
     margin: auto;
     background-color: rgb(39, 99, 114);
     color: white;
-    display: none;
+    display: flex;
     align-self: center;
     border-radius: 10px;
     font-size: 1.4em;

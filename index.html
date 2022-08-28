@@ -11,21 +11,23 @@
 </head>
 <body>
     <h1>Tic-Tac-Toe</h1>
-    <div id="players-container">
-        <div class="players-window">
-            <h3>Player 1</h3>  
-            <label for="player1-input">Enter name:</label>
-            <input type="text" id="player1-input" class="players-input">
+    <form action="#" id="players-form">
+        <div id="players-container">
+            <div class="players-window">
+                <h3>Player 1</h3>  
+                <label for="player1-input">Enter name:</label>
+                <input type="text" id="player1-input" class="players-input" required>
+            </div>
+            <div class="players-window">
+                <h3>Player 2</h3> 
+                <label for="player2-input">Enter name:</label>   
+                <input type="text" id="player2-input" class="players-input" required>  
+            </div>
         </div>
-        <div class="players-window">
-            <h3>Player 2</h3> 
-            <label for="player2-input">Enter name:</label>   
-            <input type="text" id="player2-input" class="players-input">  
+        <div id="start-container">
+            <input type="submit" value="Start" id="start-btn">
         </div>
-    </div>
-    <div id="start-container">
-        <input type="button" value="Start" id="start-btn">
-    </div>
+    </form>
     <div id="board-players-container">
         <div id="player1-info"></div>
         <div id="board">

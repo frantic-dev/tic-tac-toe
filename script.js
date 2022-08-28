@@ -102,26 +102,13 @@ const ticTacToe = (() => {
         }
     }
 
-    const startBtn = document.querySelector('#start-btn');
-    const playersContainer = document.querySelector('#players-container');
-    const board = document.querySelector('#board');
+    const playersForm = document.querySelector('#players-form');
     const player1Info = document.querySelector('#player1-info');
     const player2Info = document.querySelector('#player2-info')
     let player1Name = document.querySelector('#player1-input');
     let player2Name = document.querySelector('#player2-input');
-
-    startBtn.addEventListener('click', () => {
-        startBtn.setAttribute('style', 'display: none');
-       playersContainer.setAttribute('style', 'display: none;');
-        restartBtn.setAttribute('style', 'display: block');
-        board.setAttribute('style', 'display: grid');
-        player1Info.style.display = "flex";
-        player2Info.style.display = "flex";
-        getPlayers();
-        player1Info.textContent = `${player1.name}'s turn`;
-        player2Info.textContent = player2.name;
-    })
-
+    const gameContainer = document.querySelector('#board-players-container');
+    
     let player1;
     let player2;
 
@@ -146,7 +133,16 @@ const ticTacToe = (() => {
     function Players (name, moves) {
         return {name, moves};
     }
-
+    
+    playersForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        getPlayers();
+        playersForm.setAttribute('style', 'display: none');
+        restartBtn.setAttribute('style', 'display: block');
+        gameContainer.setAttribute('style', 'display: flex');
+        player1Info.textContent = `${player1.name}'s turn`;
+        player2Info.textContent = player2.name;
+    })
 
     return {playRound, getPlayers}
 })()
